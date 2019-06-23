@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box"></div>
+	</body>
+	<script type="text/javascript" src="js/ajax请求后端.js" ></script>
+	<script>
+		//encodeURIComponent() 函数可把字符串作为URI组件进行转码
+		//在ASCII码的规范中有的不会进行转码
+		//不会对ASCII码的字母和数字进行编码，也不会对ASCII的标点符号进行编码
+		//-_!~*.()不会进行编码
+		//但是其他字符都会进行转码  例如：@ = + $，# / &
+		//这些字符用于分割URI组件的标点符号，都是要由一个
+		//或者多个十六进制符号转义序列替换的
+		
+//		str='a+abc+cc$dd@yy'
+//		str1=encodeURIComponent(str);//
+//		console.log(str1);// "a%2Babc%2Bcc%24dd%40yy"
+//		str2=decodeURIComponent(str1);
+//		console.log(str2)//"a+abc+cc$dd@yy"
+	
+		ajax({
+			type:"get",
+			dataType:"json",
+			url:'https://www.easy-mock.com/mock/5cd91340756d7373c032d699/index/bannerRight',
+			success:function(responseData){
+				var data=responseData.result;
+				var html="";
+				console.log(data);
+				data.forEach(function(txt){
+					html+=`<div>
+							<h3 class="name">${txt.title}</h3>
+							<img src="${txt.image}">
+						</div>`;
+				});
+				document.getElementById('box').innerHTML=html;
+			}
+		})
+	</script>
+</html>

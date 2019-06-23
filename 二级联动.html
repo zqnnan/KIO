@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<select name="" id="one" onchange="fn(this.value)">
+			<option value="">——请选择——</option>
+			<option value="0">河南省</option>
+			<option value="1">山西省</option>
+			<option value="2">内蒙古</option>
+		</select>
+		<select name="" id="two">
+			<option value="">——请选择——</option>
+		</select>
+	</body>
+	<script>
+		var two = document.getElementById("two");
+		var city = []
+		city[0] = ["郑州市","新乡市","许昌市","开封市"]
+		city[1] = ["太原市","吕梁市","大同市","运城市"]
+		city[2] = ["呼和浩特","包头市","呼伦贝尔市","赤峰市"]
+		function fn(a){
+			two.length = 1
+			console.log(a)
+			for(var i=0;i<city[a].length;i++){
+				var op = new Option(city[a][i])
+				console.log(op)
+				two.appendChild(op)
+			}
+		}
+	</script>
+</html>
